@@ -48,7 +48,7 @@ Checkout the documentation...:
 * Step 1: Download the master branch from our gitlab page as a zip file, or clone it to your working directory with:
 
     GitLab: ``git clone https://gitlab.nist.gov/gitlab/jac16/generate_alchemical_lammps_inputs``
-    
+
     GitHub: ``git clone https://github.com/usnistgov/generate_alchemical_lammps_inputs``
 
 * Step 2 (Optional): If you are using conda and you want to create a new environment for this package you may install with:
@@ -73,12 +73,6 @@ Checkout the documentation...:
 
 The license in this repository is superseded by the most updated language
 on of the Public Access to NIST Research [*Copyright, Fair Use, and Licensing Statement for SRD, Data, and Software*][nist-open].
-
-> **IMPORTANT**
-> If your repository includes any software or data that is licensed by
-> a third party, create a separate file for third-party licenses
-> (`THIRD_PARTY_LICENSES.md` is recommended) and include copyright and
-> licensing statements in compliance with the conditions of those licenses.
 
 ---
 

@@ -26,58 +26,9 @@ in LAMMPS as that is system specific and left to the user.
 Note that in LAMMPS, [fix adapt/fep](https://docs.lammps.org/fix_adapt_fep.html) changes $\lambda$ and
 [compute fep](https://docs.lammps.org/compute_fep.html) changes $\lambda'$.
 
-.. versionadded:: 1.0.0
-
 """
 
 import numpy as np
-from scipy import constants
-
-from alchemlyb.postprocessors.units import R_kJmol, kJ2kcal
-
-
-def beta_from_units(T, units):
-    """Output value of beta from temperature and units.
-
-    Parameters
-    ----------
-    T : float
-        Temperature that the system was run with
-    units : str
-        LAMMPS style unit
-
-    Returns
-    -------
-    beta : float
-        Value of beta used to scale the potential energy.
-
-    Raises
-    ------
-    ValueError
-        If unit string is not recognized.
-
-    .. versionadded:: 1.??
-    """
-    if units == "real":  # E in kcal/mol, T in K
-        beta = 1 / (R_kJmol * kJ2kcal * T)
-    elif units == "lj":  # Nondimensional E and T scaled by epsilon
-        beta = 1 / T
-    elif units == "metal":  # E in eV, T in K
-        beta = 1 / (R_kJmol * kJ2kcal * T)  # NoteHere!!!!
-    elif units == "si":  # E in J, T in K
-        beta = 1 / (constants.R * T * constants.physical_constants["electron volt"][0])
-    elif units == "cgs":  # E in ergs, T in K
-        beta = 1 / (constants.R * T * 1e-7)
-    elif units == "electron":  # E in Hartrees, T in K
-        beta = 1 / (constants.R * T * constants.physical_constants["Hartree energy"][0])
-    elif units == "micro":  # E in epicogram-micrometer^2/microsecond^2, T in K
-        beta = 1 / (constants.R * T * 1e-15)
-    elif units == "nano":  # E in attogram-nanometer^2/nanosecond^2, T in K
-        beta = 1 / (constants.R * T * 1e-21)
-    else:
-        raise ValueError("LAMMPS unit type, {}, is not supported. Supported types are: real and lj".format(units))
-
-    return beta
 
 
 def _check_fix_adapt_changes_format(fix_adapt_changes):
