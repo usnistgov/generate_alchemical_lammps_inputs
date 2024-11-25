@@ -113,7 +113,7 @@ ENV/
 *profraw
 
 # In-tree generated files
-*/_version.py
+*_version.py
 
 # mac index files
 *.DS_store
