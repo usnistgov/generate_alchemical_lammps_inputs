@@ -1,0 +1,7 @@
+include CODE_OF_CONDUCT.md
+include CODEMETA
+include CODEOWNERS
+include fair-software.md
+include LICENSES/LICENSE.md
+
+global-exclude *.py[cod] __pycache__ *.so

@@ -1,0 +1,16 @@
+name: generate_alchemical_lammps_inputs
+channels:
+
+  - conda-forge
+
+dependencies:
+  - python
+  - pip
+  - sphinx>2.1
+  - docutils>=0.17
+  - pre-commit
+  - black
+  # Add depedencies at this level, if they aren't available on conda or conda-forge, add to pip section:
+  - pip:
+    - myst_parser
+    - sphinx_copybutton
