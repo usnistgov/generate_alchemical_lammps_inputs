@@ -7,7 +7,7 @@ def get_parser():
     """Process line arguments"""
 
     ## Define parser functions and arguments
-    parser = argparse.ArgumentParser(description="Parsers for extracting alchemical data from LAMMPS output files.")
+    parser = argparse.ArgumentParser(description="Functions to generate LAMMPS inputs for alchemical calculations.")
     parser.add_argument(
         "-d",
         "--docs",

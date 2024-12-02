@@ -1,12 +1,12 @@
 [build-system]
-requires = ["setuptools>=61.0", "versioningit~=2.0"] # Maybe "cython"
+requires = ["setuptools>=61.0", "versioningit~=2.0"]
 build-backend = "setuptools.build_meta"
 
 # Self-descriptive entries which should always be present
 # https://packaging.python.org/en/latest/specifications/declaring-project-metadata/
 [project]
 name = "generate_alchemical_lammps_inputs"
-description = "Parsers for extracting alchemical data from LAMMPS output files."
+description = "Functions to generate LAMMPS inputs for alchemical calculations."
 dynamic = ["version"]
 readme = "README.md"
 

@@ -9,47 +9,23 @@ Certain commercial equipment, instruments, or materials are identified in this p
 Generate Alchemical LAMMPS Inputs
 ==============================
 
- Parsers for extracting alchemical data from LAMMPS output files.
-
-> **IMPORTANT**
-> Per the [GitHub ROB][gh-rob] and [NIST Suborder 1801.02][nist-s-1801-02],
-your README should contain:
-> 1. Software or Data Description
->    - Statements of purpose and maturity
->    - Description of the repository contents
->    - Technical installation instructions, including operating
->      system or software dependencies
-> 1. Contact Information
->    - PI name, NIST OU, Division, and Group names
->    - Contact email address at NIST
-> 1. Related Material
->    - URL for associated project on the NIST website or other Department
->      of Commerce page, if available
->    - References to user guides if stored outside of GitHub
-> 1. Directions on appropriate citation with example text
-> 1. References to any included non-public domain software modules,
->    and additional license language if needed, *e.g.* [BSD][li-bsd],
->    [GPL][li-gpl], or [MIT][li-mit]
->
-> The more detailed your README, the more likely our colleagues
-> around the world are to find it through a Web search. For general
-> advice on writing a helpful README, please review
-> [*Making Readmes Readable*][18f-guide] from 18F and Cornell's
-> [*Guide to Writing README-style Metadata*][cornell-meta].
+Functions to generate LAMMPS inputs for alchemical calculations. This package was produced for generating the simulation input file for the completion of the publication "Hydration Contribution to the Solvation Free Energy of Water-Soluble Polymers". These functions include inputs used for thermodynamic integration, Bennett Acceptance Ratio (BAR), or Multi-state Bennett Acceptance Ratio (MBAR).
 
 ## Documentation
-Checkout the documentation...:
+
  - locally: Run the following in the command line: ``python -m md_spa -d``
- - on [GitLab](https://jac16.ipages.nist.gov/generate_alchemical_lammps_inputs)
- - on GitHub (coming soon)
+ - online: [GitHub][docs4nist]
+
+## Dependencies
+
+This package is tested for python 3.10+ on all Windows, MacOS, and Linux systems.
+No python library dependenices are required before installation.
 
 ## Installation
 
 * Step 1: Download the master branch from our gitlab page as a zip file, or clone it to your working directory with:
 
-    GitLab: ``git clone https://gitlab.nist.gov/gitlab/jac16/generate_alchemical_lammps_inputs``
-
-    GitHub: ``git clone https://github.com/usnistgov/generate_alchemical_lammps_inputs``
+``git clone https://github.com/usnistgov/generate_alchemical_lammps_inputs``
 
 * Step 2 (Optional): If you are using conda and you want to create a new environment for this package you may install with:
 
@@ -74,6 +50,23 @@ Checkout the documentation...:
 The license in this repository is superseded by the most updated language
 on of the Public Access to NIST Research [*Copyright, Fair Use, and Licensing Statement for SRD, Data, and Software*][nist-open].
 
+## Contact
+
+Jennifer A. Clark, PhD\
+[Debra J. Audus, PhD][daudus] (debra.audus@nist.gov)\
+[Jack F. Douglas, PhD][jdouglas]\
+
+Affilation:
+[Polymer Analytics Project][polyanal]\
+[Polymer and Complex Fluids Group][group1]\
+[Materials Science and Engineering Division][msed]\
+[Material Measurement Laboratory][mml]\
+[National Institute of Standards and Technology][nist]\
+
+## Citation
+
+Clark, J. A.; Audus, D. J.; Douglas, J. F. Python Package for Generating LAMMPS Input Scripts for Alchemical Processes: Generate_alchemical_lammps_inputs, 2024. https://doi.org/10.18434/mds2-3641.
+
 ---
 
 ### Acknowledgements
@@ -92,3 +85,11 @@ Project based on the
 [nist-disclaimer]: https://www.nist.gov/open/license
 [nist-s-1801-02]: https://inet.nist.gov/adlp/directives/review-data-intended-publication
 [nist-open]: https://www.nist.gov/open/license#software
+[docs4nist]: https://www.nist.gov/docs4nist/
+[daudus]: https://www.nist.gov/people/debra-audus
+[jdouglas]: https://www.nist.gov/people/jack-f-douglas
+[polyanal]: https://www.nist.gov/programs-projects/polymer-analytics
+[group1]: https://www.nist.gov/mml/materials-science-and-engineering-division/polymers-and-complex-fluids-group
+[msed]: https://www.nist.gov/mml/materials-science-and-engineering-division
+[mml]: https://www.nist.gov/mml
+[nist]: https://www.nist.gov

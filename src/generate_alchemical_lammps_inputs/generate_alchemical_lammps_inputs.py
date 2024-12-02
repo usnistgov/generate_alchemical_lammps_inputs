@@ -1,17 +1,14 @@
-"""Parsers for extracting alchemical data from [LAMMPS](https://docs.lammps.org/Manual.html) output files.
+"""Functions to generate LAMMPS inputs for alchemical calculations.
 
 For clarity, we would like to distinguish the difference between $\lambda$ and $\lambda'$. We refer to $\lambda$ as
 the potential scaling of the equilibrated system, so that when this value is changed, the system undergoes another equilibration
 step. One the other hand, $\lambda'$ is the value used to scaled the potentials for the configurations of the system equilibrated
 for $\lambda$. The value of $\lambda'$ is used in two instances. First, in thermodynamic integration (TI), values of $\lambda'$
-that are very close to $\lambda$ can be used to calculate the derivative. This is needed because LAMMPS does not compute
-explicit derivatives, although one should check whether they can derive an explicit expression, they cannot for changes of
+that are very close to $\lambda$ can be used to calculate the derivative of the free energy with respect to $\lambda$. This is 
+needed because LAMMPS does not compute explicit derivatives, although one should check whether they can derive an explicit expression, they cannot for changes of
 $\lambda'$ in the soft Lennard-Jones (LJ) potential.
 
-The parsers featured in this module are constructed to parse LAMMPS output files output using the
-[`fix ave/time command`](https://docs.lammps.org/fix_ave_time.html), containing data for given potential energy values (an
-approximation of the Hamiltonian) at specified values of $\lambda$ and $\lambda'$, $U_{\lambda,\lambda'}$. Because generating
-the input files can be cumbersome, functions have been included to generate the appropriate sections. If a linear approximation
+Because generating LAMMPS input files can be cumbersome, functions have been included to generate the appropriate sections. If a linear approximation
 can be made to calculate $U_{\lambda,\lambda'}$ from $U_{\lambda}$ in post-processing, we recommend using
 :func:`alchemlyb.parsing.generate_input_linear_approximation()`. If a linear approximation cannot be made (such as changing
 $\lambda$ in the soft-LJ potential) we recommend running a loop over all values of $\lambda$ saving frames spaced to be

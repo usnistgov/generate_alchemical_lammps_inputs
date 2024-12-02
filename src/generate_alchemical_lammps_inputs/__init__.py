@@ -1,4 +1,4 @@
-"""Parsers for extracting alchemical data from LAMMPS output files."""
+"""Functions to generate LAMMPS inputs for alchemical calculations."""
 
 from generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs import (
     generate_input_linear_approximation as generate_input_linear_approximation,

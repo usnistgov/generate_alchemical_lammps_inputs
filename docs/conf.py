@@ -173,7 +173,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, "generate_alchemical_lammps_inputs", "Generate Alchemical LAMMPS Inputs Documentation",
-     ", ".join(authors), "generate_alchemical_lammps_inputs", "Parsers for extracting alchemical data from LAMMPS output files.",
+     ", ".join(authors), "generate_alchemical_lammps_inputs", "Functions to generate LAMMPS inputs for alchemical calculations.",
      "Miscellaneous"),
 ]
 
