@@ -25,7 +25,7 @@ No python library dependenices are required before installation.
 
 * Step 1: Download the master branch from our gitlab page as a zip file, or clone it to your working directory with:
 
-``git clone https://github.com/usnistgov/generate_alchemical_lammps_inputs``
+    ``git clone https://github.com/usnistgov/generate_alchemical_lammps_inputs``
 
 * Step 2 (Optional): If you are using conda and you want to create a new environment for this package you may install with:
 
@@ -54,14 +54,14 @@ on of the Public Access to NIST Research [*Copyright, Fair Use, and Licensing St
 
 Jennifer A. Clark, PhD\
 [Debra J. Audus, PhD][daudus] (debra.audus@nist.gov)\
-[Jack F. Douglas, PhD][jdouglas]\
+[Jack F. Douglas, PhD][jdouglas]
 
 Affilation:
 [Polymer Analytics Project][polyanal]\
 [Polymer and Complex Fluids Group][group1]\
 [Materials Science and Engineering Division][msed]\
 [Material Measurement Laboratory][mml]\
-[National Institute of Standards and Technology][nist]\
+[National Institute of Standards and Technology][nist]
 
 ## Citation
 
