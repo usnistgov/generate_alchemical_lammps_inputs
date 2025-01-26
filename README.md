@@ -1,6 +1,5 @@
 <!--- GitHub Badges only --->
 [![Build Status](https://github.com/usnistgov/generate_alchemical_lammps_inputs/workflows/CI/badge.svg)](https://github.com/usnistgov/generate_alchemical_lammps_inputs/actions?query=workflow%3ACI)
---->
 
 ### [NIST Disclaimer][nist-disclaimer]
 

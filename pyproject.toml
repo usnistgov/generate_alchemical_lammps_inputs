@@ -30,15 +30,12 @@ dependencies = [
     "sphinx_copybutton",
     "pre-commit",
     "black",
-    ""
 ]
 
 # Update the urls once the hosting is set up.
 [project.urls]
-#"GitHub Source" = "https://github.com/usnistgov/generate_alchemical_lammps_inputs/"
-#"Public Documentation" = "https://Docs4NIST.nist.gov/generate_alchemical_lammps_inputs/"
-"GitLab Documentation" = "https://jac16.ipages.nist.gov/generate_alchemical_lammps_inputs/"
-"GitLab Source" = "https://gitlab.nist.gov/gitlab/jac16/generate_alchemical_lammps_inputs/"
+"GitHub Source" = "https://github.com/usnistgov/generate_alchemical_lammps_inputs/"
+"Public Documentation" = "https://Docs4NIST.nist.gov/generate_alchemical_lammps_inputs/"
 
 [project.optional-dependencies]
 test = [
@@ -71,7 +68,7 @@ license-files = ["LICENSES/*.md"]
 
 [tool.setuptools.packages.find]
 namespaces = false
-where = ["."]
+where = ["src/"]
 
 # Ref https://setuptools.pypa.io/en/latest/userguide/datafiles.html#package-data
 [tool.setuptools.package-data]
