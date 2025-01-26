@@ -12,13 +12,13 @@ Functions to generate LAMMPS inputs for alchemical calculations. This package wa
 
 ## Documentation
 
- - locally: Run the following in the command line: ``python -m md_spa -d``
+ - locally: Run the following in the command line: ``python -m generate_alchemical_lammps_inputs -d``
  - online: [GitHub][docs4nist]
 
 ## Dependencies
 
 This package is tested for python 3.10+ on all Windows, MacOS, and Linux systems.
-No python library dependenices are required before installation.
+No python library dependencies are required before installation.
 
 ## Installation
 
@@ -55,7 +55,7 @@ Jennifer A. Clark, PhD\
 [Debra J. Audus, PhD][daudus] (debra.audus@nist.gov)\
 [Jack F. Douglas, PhD][jdouglas]
 
-Affilation:
+## Affiliation
 [Polymer Analytics Project][polyanal]\
 [Polymer and Complex Fluids Group][group1]\
 [Materials Science and Engineering Division][msed]\

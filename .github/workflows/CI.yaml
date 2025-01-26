@@ -33,10 +33,13 @@ jobs:
           ulimit -a
 
       # More info on options: https://github.com/marketplace/actions/provision-with-micromamba
-      - uses: mamba-org/provision-with-micromamba@main
+      - uses: mamba-org/setup-micromamba@v2
         with:
           environment-file: requirements.yaml
           environment-name: generate_alchemical_lammps_inputs
+          init-shell: bash
+          cache-environment: true
+          post-cleanup: 'all'
 
           channels: conda-forge,defaults
 
