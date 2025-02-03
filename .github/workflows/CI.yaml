@@ -77,6 +77,7 @@ jobs:
       - uses: usnistgov/Docs4NIST@0.7
         with:
           docs-folder: docs/
+          pip-requirements: docs/requirements.txt
           formats: |-
             epub
             pdf
