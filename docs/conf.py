@@ -18,12 +18,6 @@ import sys
 
 sys.path.insert(0, os.path.abspath(".."))
 
-try:
-    import generate_alchemical_lammps_inputs
-except Exception:
-    raise ImportError("The package, generate_alchemical_lammps_inputs, has not been installed.")
-
-
 # -- Project information -----------------------------------------------------
 
 project = "Generate Alchemical LAMMPS Inputs"
