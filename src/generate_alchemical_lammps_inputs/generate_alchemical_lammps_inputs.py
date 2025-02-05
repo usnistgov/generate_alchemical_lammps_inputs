@@ -162,19 +162,19 @@ def generate_input_linear_approximation(
 
         - pair; arguments are: pair_style parameter solvent_type(s) solute_type(s)
 
-            - pair_style (str) : String of LAMMPS pair style being changes
-            - parameter (str) : Parameter being varied, see table in `compute fep <https://docs.lammps.org/compute_fep.html>`_
-              for the options in your pair-potential
-            - solvent_type (str) : String defining atom types in the solvent (no spaces), lists are denoted with an asterisk
-            - solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk
+        - pair_style (str) : String of LAMMPS pair style being changes
+        - parameter (str) : Parameter being varied, see table in `compute fep <https://docs.lammps.org/compute_fep.html>`_
+          for the options in your pair-potential
+        - solvent_type (str) : String defining atom types in the solvent (no spaces), lists are denoted with an asterisk
+        - solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk
 
         - atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a "lambda" parameter
             whose range is defined in `parameter_range`, where the starting and end points are mutliplied by ``variable_initial``.
 
-            - parameter (str) : Parameter being varied, see table in `compute
-              fep <https://docs.lammps.org/compute_fep.html>`_ for the options such as "charge"
-            - atom_type (str) : String defining atom types being affected, lists are denoted with an asterisk
-            - variable_initial (float) : Specify the initial value of the variable
+        - parameter (str) : Parameter being varied, see table in `compute
+          fep <https://docs.lammps.org/compute_fep.html>`_ for the options such as "charge"
+        - atom_type (str) : String defining atom types being affected, lists are denoted with an asterisk
+        - variable_initial (float) : Specify the initial value of the variable
 
     parameter2_value : str, default=None
         Value to set ``parameter2`` in ``fix_adapt_changes2``.
