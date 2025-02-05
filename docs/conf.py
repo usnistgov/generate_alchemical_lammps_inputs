@@ -48,7 +48,7 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.extlinks",
     "myst_parser",
-    "sphinx_copybutton",
+ #   "sphinx_copybutton",
 ]
 
 autosummary_generate = True
