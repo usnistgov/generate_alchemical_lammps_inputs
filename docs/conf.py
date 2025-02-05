@@ -146,7 +146,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, "generate_alchemical_lammps_inputs.tex", "Generate Alchemical LAMMPS Inputs Documentation",
-     "generate_alchemical_lammps_inputs", "manual"),
+     ", ".join(authors), "manual"),
 ]
 
 
