@@ -22,7 +22,7 @@ No python library dependencies are required before installation.
 
 ## Installation
 
-* Step 1: Download the master branch from our gitlab page as a zip file, or clone it to your working directory with:
+* Step 1: Download the master branch from our github page as a zip file, or clone it to your working directory with:
 
     ``git clone https://github.com/usnistgov/generate_alchemical_lammps_inputs``
 
