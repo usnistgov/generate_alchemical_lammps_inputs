@@ -75,7 +75,6 @@ Clark, J. A.; Audus, D. J.; Douglas, J. F. Python Package for Generating LAMMPS 
 [li-gpl]: https://opensource.org/licenses/gpl-license
 [li-mit]: https://opensource.org/licenses/mit-license
 [nist-disclaimer]: https://www.nist.gov/open/license
-[nist-s-1801-02]: https://inet.nist.gov/adlp/directives/review-data-intended-publication
 [nist-open]: https://www.nist.gov/open/license#software
 [docs4nist]: https://www.nist.gov/docs4nist/
 [daudus]: https://www.nist.gov/people/debra-audus
