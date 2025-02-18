@@ -66,13 +66,6 @@ Jennifer A. Clark, PhD\
 
 Clark, J. A.; Audus, D. J.; Douglas, J. F. Python Package for Generating LAMMPS Input Scripts for Alchemical Processes: Generate_alchemical_lammps_inputs, 2024. https://doi.org/10.18434/mds2-3641.
 
----
-
-### Acknowledgements
-
-Project based on the
-[NIST Internal Cookiecutter](https://gitlab.nist.com/jaclark5/cookiecutter_template_nist_python) version 0.0.
-
 <!-- References -->
 
 [18f-guide]: https://github.com/18F/open-source-guide/blob/18f-pages/pages/making-readmes-readable.md
