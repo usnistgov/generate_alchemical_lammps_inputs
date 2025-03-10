@@ -44,7 +44,10 @@ jobs:
           cache-environment: true
           post-cleanup: 'all'
 
-          channels: conda-forge,defaults
+          condarc: |
+            channels:
+              - conda-forge
+              - defaults
 
           extra-specs: |
             python=${{ matrix.python-version }}
