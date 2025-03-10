@@ -23,7 +23,7 @@ Functions to generate LAMMPS inputs for alchemical calculations. This package wa
 
 * Step 2 (Optional): If you are using conda and you want to create a new environment for this package you may install with:
 
-    ``conda env create -f requirements.yaml``
+    ``conda env create -f generate_alchemical_lammps_inputs/requirements.yaml``
 
 * Step 3: Install package with:
 
