@@ -1,4 +1,4 @@
-name: generate_alchemical_lammps_inputs
+name: gali
 channels:
 
   - conda-forge
@@ -11,6 +11,7 @@ dependencies:
   - docutils>=0.17
   - pre-commit
   - black
+  - nbsphinx
   # Add depedencies at this level, if they aren't available on conda or conda-forge, add to pip section:
   - pip:
     - myst_parser

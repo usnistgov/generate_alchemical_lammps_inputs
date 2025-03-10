@@ -15,11 +15,6 @@ Functions to generate LAMMPS inputs for alchemical calculations. This package wa
  - locally: Run the following in the command line: ``python -m generate_alchemical_lammps_inputs -d``
  - online: [GitHub][docs4nist]
 
-## Dependencies
-
-This package is tested for python 3.10+ on all Windows, MacOS, and Linux systems.
-No python library dependencies are required before installation.
-
 ## Installation
 
 * Step 1: Download the master branch from our github page as a zip file, or clone it to your working directory with:
