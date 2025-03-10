@@ -1,6 +1,9 @@
 name: CI
 
 on:
+  workflow_dispatch:
+    branches:
+     - "debug_docs"
   push:
     branches:
       - "main"
