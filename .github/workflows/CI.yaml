@@ -49,9 +49,8 @@ jobs:
               - conda-forge
               - defaults
 
-          extra-specs: |
-            python=${{ matrix.python-version }}
           create-args: >-
+            python=${{ matrix.python-version }}
             pytest
             pytest-cov
             codecov
