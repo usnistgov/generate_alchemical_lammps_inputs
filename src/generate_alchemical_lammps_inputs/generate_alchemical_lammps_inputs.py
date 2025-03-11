@@ -1,29 +1,27 @@
 """Functions to generate LAMMPS inputs for alchemical calculations.
 
-For clarity, we would like to distinguish the difference between :math:`\lambda` and :math:`\lambda'` (or :math:`\lambda_2`). We refer to :math:`\lambda` as
-the scaling factor on the potential energy of the equilibrated system, so that when this value is changed, the system undergoes another equilibration
-step. On the other hand, :math:`\lambda'` is the value used to scale the potentials despite those the configurations being equilibrated
-for a different value of :math:`\lambda`. The value of :math:`\lambda'` is used in two instances. First, in thermodynamic integration (TI), values of :math:`\lambda'`
-that are very close to :math:`\lambda` can be used to calculate the derivative of the free energy with respect to :math:`\lambda`. This is
+For clarity, we would like to distinguish the difference between $\lambda$ and $\lambda'$. We refer to $\lambda$ as
+the potential scaling of the equilibrated system, so that when this value is changed, the system undergoes another equilibration
+step. One the other hand, $\lambda'$ is the value used to scaled the potentials for the configurations of the system equilibrated
+for $\lambda$. The value of $\lambda'$ is used in two instances. First, in thermodynamic integration (TI), values of $\lambda'$
+that are very close to $\lambda$ can be used to calculate the derivative of the free energy with respect to $\lambda$. This is 
 needed because LAMMPS does not compute explicit derivatives, although one should check whether they can derive an explicit expression, they cannot for changes of
-:math:`\lambda'` in the soft Lennard-Jones (LJ) potential.
+$\lambda'$ in the soft Lennard-Jones (LJ) potential.
 
 Because generating LAMMPS input files can be cumbersome, functions have been included to generate the appropriate sections. If a linear approximation
-can be made to calculate :math:`U_{\lambda,\lambda'}` from :math:`U_{\lambda}` in post-processing, we recommend using
-:func:`generate_input_linear_approximation()`. If a linear approximation cannot be made (such as changing
-:math:`\lambda` in the soft-LJ potential) we recommend running a loop over all values of :math:`\lambda` saving frames spaced to be
-independent samples, and an output file with small perturbations in :math:`\lambda'` to calculate the derivative for TI in
-post-processing. This is achieved with :func:`generate_traj_input()`. After this first simulation, we then
-recommend the files needed for MBAR are generated using the `rerun <https://docs.lammps.org/rerun.html>`_ feature in LAMMPS.
+can be made to calculate $U_{\lambda,\lambda'}$ from $U_{\lambda}$ in post-processing, we recommend using
+:func:`alchemlyb.parsing.generate_input_linear_approximation()`. If a linear approximation cannot be made (such as changing
+$\lambda$ in the soft-LJ potential) we recommend running a loop over all values of $\lambda$ saving frames spaced to be
+independent samples, and an output file with small perturbations with $\lambda'$ to calculate the derivative for TI in
+post-processing. This is achieved with `alchemlyb.parsing.generate_traj_input()`. After this first simulation, we then
+recommend the files needed for MBAR are generated using the [rerun](https://docs.lammps.org/rerun.html) feature in LAMMPS.
 Breaking up the computation like this will allow one to add additional points to their MBAR analysis without repeating the
 points from an initial simulation. Generating the file for a rerun is achieved with
-:func:`generate_rerun_mbar()`.
-
-Notice that the output files do not contain the header information expected
+:func:`alchemlyb.parsing.generate_rerun_mbar()`. Notice that the output files do not contain the header information expected
 in LAMMPS as that is system specific and left to the user.
 
-Note that in LAMMPS, `fix adapt/fep <https://docs.lammps.org/fix_adapt_fep.html>`_ changes values of :math:`\lambda` and
-`compute fep <https://docs.lammps.org/compute_fep.html>`_ changes values of :math:`\lambda'`.
+Note that in LAMMPS, [fix adapt/fep](https://docs.lammps.org/fix_adapt_fep.html) changes $\lambda$ and
+[compute fep](https://docs.lammps.org/compute_fep.html) changes $\lambda'$.
 
 """
 
@@ -37,7 +35,7 @@ def _check_fix_adapt_changes_format(fix_adapt_changes):
     ----------
     fix_adapt_changes : list
         A list of lists containing the following information from `fix adapt/fep <https://docs.lammps.org/fix_adapt_fep.html>`_:
-        attribute (str), args (tuple). This option is useful when a parameter that has been varied and is set to another value
+        atribute (str), args (tuple). This option is useful when a parameter that has been varied and is set to another value
         in this simulation, e.g., lambda when the Coulomb potential is set to zero. Using this feature avoids complications
         with writing the pair potential information in the data file. The attributes supported in LAMMPS are:
 
@@ -134,7 +132,7 @@ def generate_input_linear_approximation(
         - solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk
 
         - atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a "lambda" parameter
-            whose range is defined in `parameter_range`, where the starting and end points are multiplied by ``variable_initial``.
+            whose range is defined in `parameter_range`, where the starting and end points are mutliplied by ``variable_initial``.
 
         - parameter (str) : Parameter being varied, see table in `compute
           fep <https://docs.lammps.org/compute_fep.html>`_ for the options in your pair-potential
@@ -149,13 +147,11 @@ def generate_input_linear_approximation(
         String defining all atom types in the solute (no spaces) with lists defined using colons
     n_run_equil_steps : int, default=1000000
         Number of steps in each equilibration run, first with a ramp from the old lambda value to the new value and then for
-        equilibration at the new value. The total number of time steps taken per step in lambda (i.e., window) is
+        equilibration at the new value. The total number of timesteps taken per step in lambda (i.e., window) is
         2*n_run_equil_steps + n_run_prod_steps
     n_run_prod_steps : int, default=1000000
-        Number of steps in each production run. The total number of time steps taken per step in lambda (i.e., window) is
+        Number of steps in each production run. The total number of timesteps taken per step in lambda (i.e., window) is
         2*n_run_equil_steps + n_run_prod_steps
-    output_frequency : int, default=1000
-        Number of steps between thermo output and dump output.
     output_file : str, default=None
         File name and path for optional output file
     fix_adapt_changes2 : list, default=[]
@@ -173,7 +169,7 @@ def generate_input_linear_approximation(
         - solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk
 
         - atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a "lambda" parameter
-            whose range is defined in `parameter_range`, where the starting and end points are multiplied by ``variable_initial``.
+            whose range is defined in `parameter_range`, where the starting and end points are mutliplied by ``variable_initial``.
 
         - parameter (str) : Parameter being varied, see table in `compute
           fep <https://docs.lammps.org/compute_fep.html>`_ for the options such as "charge"
@@ -513,7 +509,7 @@ def generate_traj_input(
         - solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk
 
         - atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a "lambda" parameter
-            whose range is defined in `parameter_range`, where the starting and end points are multiplied by ``variable_initial``.
+            whose range is defined in `parameter_range`, where the starting and end points are mutliplied by ``variable_initial``.
 
         - parameter (str) : Parameter being varied, see table in `compute
           fep <https://docs.lammps.org/compute_fep.html>`_ for the options in your pair-potential
@@ -524,19 +520,19 @@ def generate_traj_input(
         Temperature of the simulation. This will create a variable that is used in the FEP computes.
     n_run_equil_steps : int, default=1000000
         Number of steps in each equilibration run, first with a ramp from the old lambda value to the new value and then for
-        equilibration at the new value. The total number of time steps taken per step in lambda (i.e., window) is
+        equilibration at the new value. The total number of timesteps taken per step in lambda (i.e., window) is
         2*n_run_equil_steps + n_run_prod_steps
     n_run_prod_steps : int, default=1000000
-        Number of steps in each production run. The total number of time steps taken per step in lambda (i.e., window) is
+        Number of steps in each production run. The total number of timesteps taken per step in lambda (i.e., window) is
         2*n_run_equil_steps + n_run_prod_steps
     output_frequency : int, default=1000
         Number of steps between thermo output and dump output.
-    del_parameter : float, default=0.01
+    del_parameter : float, default=0.1
         Change used to calculate the forward and backward difference used to compute the derivative through a central difference
         approximation.
     output_file : str, default=None
         File name and path for optional output file
-    fix_adapt_changes2 : list, default=None
+    fix_adapt_changes2 : list, default=[]
         A list of lists containing the following information from `fix adapt/fep <https://docs.lammps.org/fix_adapt_fep.html>`_:
         attribute (str), args (tuple). This option is useful when a parameter that has been varied and is set to another value
         in this simulation, e.g., lambda when the Coulomb potential is set to zero. Using this feature avoids complications
@@ -551,7 +547,7 @@ def generate_traj_input(
         - solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk
 
         - atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a "lambda" parameter
-            whose range is defined in `parameter_range`, where the starting and end points are multiplied by ``variable_initial``.
+            whose range is defined in `parameter_range`, where the starting and end points are mutliplied by ``variable_initial``.
 
         - parameter (str) : Parameter being varied, see table in `compute
           fep <https://docs.lammps.org/compute_fep.html>`_ for the options such as "charge"
@@ -832,10 +828,10 @@ def generate_mbar_input(
     parameter_change,
     fix_adapt_changes,
     temperature,
-    del_parameter=0.01,
     n_run_equil_steps=1000000,
     n_run_prod_steps=1000000,
     output_frequency=1000,
+    del_parameter=0.01,
     output_file=None,
     fix_adapt_changes2=None,
     parameter2_value=None,
@@ -871,7 +867,7 @@ def generate_mbar_input(
         - solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk
 
         - atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a "lambda" parameter
-            whose range is defined in `parameter_range`, where the starting and end points are multiplied by ``variable_initial``.
+            whose range is defined in `parameter_range`, where the starting and end points are mutliplied by ``variable_initial``.
 
         - parameter (str) : Parameter being varied, see table in `compute
           fep <https://docs.lammps.org/compute_fep.html>`_ for the options in your pair-potential
@@ -885,16 +881,16 @@ def generate_mbar_input(
         approximation. Must be greater then zero.
     n_run_equil_steps : int, default=1000000
         Number of steps in each equilibration run, first with a ramp from the old lambda value to the new value and then for
-        equilibration at the new value. The total number of time steps taken per step in lambda (i.e., window) is
+        equilibration at the new value. The total number of timesteps taken per step in lambda (i.e., window) is
         2*n_run_equil_steps + n_run_prod_steps
     n_run_prod_steps : int, default=1000000
-        Number of steps in each production run. The total number of time steps taken per step in lambda (i.e., window) is
+        Number of steps in each production run. The total number of timesteps taken per step in lambda (i.e., window) is
         2*n_run_equil_steps + n_run_prod_steps
     output_frequency : int, default=1000
         Number of steps between thermo output and dump output.
     output_file : str, default=None
         File name and path for optional output LAMMPS file, otherwise each line is returned as a list.
-    fix_adapt_changes2 : list, default=None
+    fix_adapt_changes2 : list, default=[]
         A list of lists containing the following information from `fix adapt/fep <https://docs.lammps.org/fix_adapt_fep.html>`_:
         attribute (str), args (tuple). This option is useful when a parameter that has been varied and is set to another value
         in this simulation, e.g., lambda when the Coulomb potential is set to zero. Using this feature avoids complications
@@ -909,7 +905,7 @@ def generate_mbar_input(
         - solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk
 
         - atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a "lambda" parameter
-            whose range is defined in `parameter_range`, where the starting and end points are multiplied by ``variable_initial``.
+            whose range is defined in `parameter_range`, where the starting and end points are mutliplied by ``variable_initial``.
 
         - parameter (str) : Parameter being varied, see table in `compute
           fep <https://docs.lammps.org/compute_fep.html>`_ for the options such as "charge"
@@ -1292,7 +1288,7 @@ def generate_rerun_mbar(
         - solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk
 
         - atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a "lambda" parameter
-            whose range is defined in `parameter_range`, where the starting and end points are multiplied by ``variable_initial``.
+            whose range is defined in `parameter_range`, where the starting and end points are mutliplied by ``variable_initial``.
 
         - parameter (str) : Parameter being varied, see table in `compute
           fep <https://docs.lammps.org/compute_fep.html>`_ for the options in your pair-potential
@@ -1305,7 +1301,7 @@ def generate_rerun_mbar(
         Number of steps between thermo output and dump output.
     output_file : str, default=None
         File name and path for optional output file
-    fix_adapt_changes2 : list, default=None
+    fix_adapt_changes2 : list, default=[]
         A list of lists containing the following information from `fix adapt/fep <https://docs.lammps.org/fix_adapt_fep.html>`_:
         attribute (str), args (tuple). This option is useful when a parameter that has been varied and is set to another value
         in this simulation, e.g., lambda when the Coulomb potential is set to zero. Using this feature avoids complications
@@ -1320,7 +1316,7 @@ def generate_rerun_mbar(
         - solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk
 
         - atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a "lambda" parameter
-            whose range is defined in `parameter_range`, where the starting and end points are multiplied by ``variable_initial``.
+            whose range is defined in `parameter_range`, where the starting and end points are mutliplied by ``variable_initial``.
 
         - parameter (str) : Parameter being varied, see table in `compute
           fep <https://docs.lammps.org/compute_fep.html>`_ for the options such as "charge"

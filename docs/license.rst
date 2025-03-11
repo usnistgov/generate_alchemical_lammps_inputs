@@ -1,4 +1,4 @@
-License
+License(s)
 ----------
 
 .. include:: ../LICENSES/LICENSE.md

@@ -2,6 +2,4 @@
 
 .. currentmodule:: {{ module }}
 
-{{ fullname }}
-
-.. autofunction:: {{ name }}
+.. autofunction:: {{ objname }}

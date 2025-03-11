@@ -290,5 +290,8 @@ Institutional guidance:
 [lc-fair-poster]: https://librarycarpentry.org/Top-10-FAIR/files/poster_10things_FAIRsoftware.pdf
 [lint]: https://en.wikipedia.org/wiki/Lint_(software)
 [midas]: https://midas.nist.gov/
+[o5701]: https://inet.nist.gov/adlp/directives/managing-public-access-results-federally-funded-research-0
+[o5702]: https://inet.nist.gov/adlp/directives/preservation-maintenance-published-research-data
 [sp811]: https://dx.doi.org/10.6028/NIST.SP.811e2008
+[sponsors]: https://gitlab.nist.gov/gitlab/tkphd/data-sponsorship
 [taxon]: https://doi.org/10.18434/T4/1432795

@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0", "versioningit~=2.0", "wheel"]
+requires = ["setuptools>=61.0", "versioningit~=2.0"]
 build-backend = "setuptools.build_meta"
 
 # Self-descriptive entries which should always be present
@@ -30,7 +30,6 @@ dependencies = [
     "sphinx_copybutton",
     "pre-commit",
     "black",
-    "nbsphinx"
 ]
 
 # Update the urls once the hosting is set up.

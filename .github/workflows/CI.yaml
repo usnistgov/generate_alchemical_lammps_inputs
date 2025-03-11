@@ -3,8 +3,7 @@ name: CI
 on:
   workflow_dispatch:
     branches:
-      - "main"
-      - "debug_docs"
+     - "debug_docs"
   push:
     branches:
       - "main"
@@ -13,10 +12,10 @@ on:
     branches:
       - "main"
   schedule:
-    # Weekly tests run on main by default:
+    # Monthly tests run on main by default:
     #   Scheduled workflows run on the latest commit on the default or base branch.
     #   (from https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule)
-    - cron: "0 0 * * 0"
+    - cron: "0 0 1 * *"
 
 jobs:
   test:
@@ -46,13 +45,11 @@ jobs:
           cache-environment: true
           post-cleanup: 'all'
 
-          condarc: |
-            channels:
-              - conda-forge
-              - defaults
+          channels: conda-forge,defaults
 
-          create-args: >-
+          extra-specs: |
             python=${{ matrix.python-version }}
+          create-args: >-
             pytest
             pytest-cov
             codecov
@@ -78,7 +75,7 @@ jobs:
           name: codecov-${{ matrix.os }}-py${{ matrix.python-version }}
 
   docs:
-    name: Build docs on ubuntu-latest
+    name: Build docs on linux
     runs-on: ubuntu-latest
     steps:
       - uses: usnistgov/Docs4NIST@0.7
@@ -86,5 +83,5 @@ jobs:
           docs-folder: docs/
           pip-requirements: docs/requirements.txt
           formats: |-
-            html
             epub
+            pdf
