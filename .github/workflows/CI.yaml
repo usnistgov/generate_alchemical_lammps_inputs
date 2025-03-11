@@ -83,6 +83,7 @@ jobs:
           docs-folder: docs/
           pip-requirements: docs/requirements.txt
           formats: |-
+            html
             epub
             pdf
 
