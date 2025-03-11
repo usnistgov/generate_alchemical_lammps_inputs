@@ -85,7 +85,7 @@ jobs:
           formats: |-
             html
             epub
-            pdf
+#            pdf
 
 #      - name: Setup upterm session
 #        uses: lhotari/action-upterm@v1
