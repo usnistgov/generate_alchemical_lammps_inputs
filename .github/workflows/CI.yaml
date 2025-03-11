@@ -84,4 +84,4 @@ jobs:
           pip-requirements: docs/requirements.txt
           formats: |-
             epub
-            pdf
+            html
