@@ -86,9 +86,9 @@ jobs:
             epub
             pdf
 
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
-        if: ${{ failure() }}
+#      - name: Setup upterm session
+#        uses: lhotari/action-upterm@v1
+#        if: ${{ failure() }}
         # with:
         #   ## limits ssh access and adds the ssh public key for the user which triggered the workflow
         #   limit-access-to-actor: true
