@@ -25,6 +25,6 @@ def get_parser():
 
 parser = get_parser()
 args = parser.parse_args()
-path = "/".join(os.path.dirname(__file__).split("/")[:-1])
+path = "/".join(os.path.dirname(__file__).split("/")[:-2])
 os.chmod("{}/docs/run.sh".format(path), 0o755)
 subprocess.check_call("{}/docs/run.sh {} {}".format(path, args.docs, args.compile_docs), shell=True)

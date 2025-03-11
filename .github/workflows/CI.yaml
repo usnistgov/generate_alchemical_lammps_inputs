@@ -3,7 +3,7 @@ name: CI
 on:
   workflow_dispatch:
     branches:
-     - "debug_docs"
+      - "main"
   push:
     branches:
       - "main"
@@ -45,11 +45,13 @@ jobs:
           cache-environment: true
           post-cleanup: 'all'
 
-          channels: conda-forge,defaults
+          condarc: |
+            channels:
+              - conda-forge
+              - defaults
 
-          extra-specs: |
-            python=${{ matrix.python-version }}
           create-args: >-
+            python=${{ matrix.python-version }}
             pytest
             pytest-cov
             codecov
@@ -85,13 +87,3 @@ jobs:
           formats: |-
             html
             epub
-#            pdf
-
-#      - name: Setup upterm session
-#        uses: lhotari/action-upterm@v1
-#        if: ${{ failure() }}
-        # with:
-        #   ## limits ssh access and adds the ssh public key for the user which triggered the workflow
-        #   limit-access-to-actor: true
-        #   ## limits ssh access and adds the ssh public keys of the listed GitHub users
-        #   limit-access-to-users: guyer

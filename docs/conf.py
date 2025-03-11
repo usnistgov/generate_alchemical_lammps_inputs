@@ -49,6 +49,7 @@ extensions = [
     "sphinx.ext.extlinks",
     "myst_parser",
     "sphinx_copybutton",
+    "nbsphinx",
 ]
 
 autosummary_generate = True
@@ -155,8 +156,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, "generate_alchemical_lammps_inputs", "Generate Alchemical LAMMPS Inputs Documentation",
-     authors, 1),
+    (master_doc, "generate_alchemical_lammps_inputs", "Generate Alchemical LAMMPS Inputs Documentation", authors, 1),
 ]
 
 
@@ -166,9 +166,15 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, "generate_alchemical_lammps_inputs", "Generate Alchemical LAMMPS Inputs Documentation",
-     ", ".join(authors), "generate_alchemical_lammps_inputs", "Functions to generate LAMMPS inputs for alchemical calculations.",
-     "Miscellaneous"),
+    (
+        master_doc,
+        "generate_alchemical_lammps_inputs",
+        "Generate Alchemical LAMMPS Inputs Documentation",
+        ", ".join(authors),
+        "generate_alchemical_lammps_inputs",
+        "Functions to generate LAMMPS inputs for alchemical calculations.",
+        "Miscellaneous",
+    ),
 ]
 
 
