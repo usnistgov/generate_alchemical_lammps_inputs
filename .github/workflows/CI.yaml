@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
     branches:
       - "main"
+      - "debug_docs"
   push:
     branches:
       - "main"
