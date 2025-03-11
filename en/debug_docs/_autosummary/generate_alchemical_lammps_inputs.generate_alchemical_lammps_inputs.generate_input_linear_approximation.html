@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>generate_input_linear_approximation &#8212; Generate Alchemical LAMMPS Inputs 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=c867aedc" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=525cde36"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="generate_mbar_input" href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_mbar_input.html" />
+    <link rel="prev" title="generate_alchemical_lammps_inputs" href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.html" />
+   
+
+  <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_mbar_input.html" title="generate_mbar_input"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.html" title="generate_alchemical_lammps_inputs"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Generate Alchemical LAMMPS Inputs 0.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="generate_alchemical_lammps_inputs.html" >generate_alchemical_lammps_inputs</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.html" accesskey="U">generate_alchemical_lammps_inputs</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">generate_input_linear_approximation</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="generate-input-linear-approximation">
+<h1>generate_input_linear_approximation<a class="headerlink" href="#generate-input-linear-approximation" title="Permalink to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation">
+<span class="sig-prename descclassname"><span class="pre">generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.</span></span><span class="sig-name descname"><span class="pre">generate_input_linear_approximation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_change</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix_adapt_changes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types_solute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types_solvent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_run_equil_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_run_prod_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix_adapt_changes2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter2_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_charged</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/generate_alchemical_lammps_inputs/generate_alchemical_lammps_inputs.html#generate_input_linear_approximation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Outputs the section of a LAMMPS input file that separates the Coulomb, nonbonded, and bond/angle/torsional contributions
+of the solute and solvent. As long as the parameter being changed is linearly dependent on the potential energy, these files for
+each value of the parameter can be used for thermodynamic integration (TI) or multi-state Bennett acceptance ratio (MBAR).</p>
+<p>The input data file for this script should be an equilibrated frame in the NPT ensemble. Notice that the input file contains
+the following keywords that you might replace with the values for your simulation using <cite>sed</cite>: TEMP, PRESS</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameter_range</strong> (<em>list[float]</em>) – Range of parameter values to be changed where the first value should be the value with which the system has been
+equilibrated.</p></li>
+<li><p><strong>parameter_change</strong> (<em>float</em>) – The size of the step between parameter values, where a positive value increases and a negative value decreases.
+Take care that number of points needed to traverse the given range should result in an integer, otherwise
+LAMMPS will not end at the desired value.</p></li>
+<li><p><strong>fix_adapt_changes</strong> (<em>list</em>) – A list of lists containing the following information from <a class="reference external" href="https://docs.lammps.org/fix_adapt_fep.html">fix adapt/fep</a>:
+attribute (str), args (tuple), e.g., [[“pair”, (“lj/cut/soft”, “lambda”, 1, 2)]]. The attributes supported in LAMMPS are:</p>
+<ul>
+<li><p>pair; arguments are: pair_style parameter solvent_type(s) solute_type(s)</p></li>
+<li><p>pair_style (str) : String of LAMMPS pair style being changes</p></li>
+<li><p>parameter (str) : Parameter being varied, see table in <a class="reference external" href="https://docs.lammps.org/compute_fep.html">compute
+fep</a> for the options in your pair-potential</p></li>
+<li><p>solvent_type (str) : String defining atom types in the solvent (no spaces), lists are denoted with an asterisk</p></li>
+<li><p>solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk</p></li>
+<li><dl class="simple">
+<dt>atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a “lambda” parameter</dt><dd><p>whose range is defined in <cite>parameter_range</cite>, where the starting and end points are mutliplied by <code class="docutils literal notranslate"><span class="pre">variable_initial</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><p>parameter (str) : Parameter being varied, see table in <a class="reference external" href="https://docs.lammps.org/compute_fep.html">compute
+fep</a> for the options in your pair-potential</p></li>
+<li><p>atom_type (str) : String defining atom types being affected, lists are denoted with an asterisk</p></li>
+<li><p>variable_initial (float) : Specify the initial value of the variable</p></li>
+</ul>
+</li>
+<li><p><strong>temperature</strong> (<em>float</em>) – Temperature of the simulation. This will create a variable that is used in the FEP computes.</p></li>
+<li><p><strong>types_solvent</strong> (<em>str</em>) – String defining all atom types in the solvent (no spaces) with lists defined using colons</p></li>
+<li><p><strong>types_solute</strong> (<em>str</em>) – String defining all atom types in the solute (no spaces) with lists defined using colons</p></li>
+<li><p><strong>n_run_equil_steps</strong> (<em>int, default=1000000</em>) – Number of steps in each equilibration run, first with a ramp from the old lambda value to the new value and then for
+equilibration at the new value. The total number of timesteps taken per step in lambda (i.e., window) is
+2*n_run_equil_steps + n_run_prod_steps</p></li>
+<li><p><strong>n_run_prod_steps</strong> (<em>int, default=1000000</em>) – Number of steps in each production run. The total number of timesteps taken per step in lambda (i.e., window) is
+2*n_run_equil_steps + n_run_prod_steps</p></li>
+<li><p><strong>output_file</strong> (<em>str, default=None</em>) – File name and path for optional output file</p></li>
+<li><p><strong>fix_adapt_changes2</strong> (<em>list, default=[]</em>) – A list of lists containing the following information from <a class="reference external" href="https://docs.lammps.org/fix_adapt_fep.html">fix adapt/fep</a>:
+attribute (str), args (tuple). This option is useful when a parameter that has been varied and is set to another value
+in this simulation, e.g., lambda when the Coulomb potential is set to zero. Using this feature avoids complications
+with writing the pair potential information in the data file. The attributes supported in LAMMPS are:</p>
+<ul>
+<li><p>pair; arguments are: pair_style parameter solvent_type(s) solute_type(s)</p></li>
+<li><p>pair_style (str) : String of LAMMPS pair style being changes</p></li>
+<li><p>parameter (str) : Parameter being varied, see table in <a class="reference external" href="https://docs.lammps.org/compute_fep.html">compute fep</a>
+for the options in your pair-potential</p></li>
+<li><p>solvent_type (str) : String defining atom types in the solvent (no spaces), lists are denoted with an asterisk</p></li>
+<li><p>solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk</p></li>
+<li><dl class="simple">
+<dt>atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a “lambda” parameter</dt><dd><p>whose range is defined in <cite>parameter_range</cite>, where the starting and end points are mutliplied by <code class="docutils literal notranslate"><span class="pre">variable_initial</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><p>parameter (str) : Parameter being varied, see table in <a class="reference external" href="https://docs.lammps.org/compute_fep.html">compute
+fep</a> for the options such as “charge”</p></li>
+<li><p>atom_type (str) : String defining atom types being affected, lists are denoted with an asterisk</p></li>
+<li><p>variable_initial (float) : Specify the initial value of the variable</p></li>
+</ul>
+</li>
+<li><p><strong>parameter2_value</strong> (<em>str, default=None</em>) – Value to set <code class="docutils literal notranslate"><span class="pre">parameter2</span></code> in <code class="docutils literal notranslate"><span class="pre">fix_adapt_changes2</span></code>.</p></li>
+<li><p><strong>is_charged</strong> (<em>bool, default=True</em>) – This will add kspace components to the record of free energy changes</p></li>
+<li><p><strong>parameter_array</strong> (<em>list, default=None</em>) – If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, this argument will overwrite the <code class="docutils literal notranslate"><span class="pre">parameter_change</span></code> argument and use the specified steps in
+the parameter. Note that the first value should represent the state that the trajectory is equilibrated at.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>file</strong> – List of strings representing lines in a file</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">generate_input_linear_approximation</a><ul>
+<li><a class="reference internal" href="#generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation"><code class="docutils literal notranslate"><span class="pre">generate_input_linear_approximation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.html"
+                          title="previous chapter">generate_alchemical_lammps_inputs</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_mbar_input.html"
+                          title="next chapter">generate_mbar_input</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_mbar_input.html" title="generate_mbar_input"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.html" title="generate_alchemical_lammps_inputs"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Generate Alchemical LAMMPS Inputs 0.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="generate_alchemical_lammps_inputs.html" >generate_alchemical_lammps_inputs</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.html" >generate_alchemical_lammps_inputs</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">generate_input_linear_approximation</a></li> 
+      </ul>
+    </div>
+
+  
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Works of NIST employees are not not subject to copyright protection in the United States.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+
+  <!-- Taken from https://www.filamentgroup.com/lab/html-includes/#another-demo%3A-including-another-html-file -->
+  <iframe src="../_static/ntd2d_menu.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </body>
+</html>

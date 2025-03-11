@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Getting Started &#8212; Generate Alchemical LAMMPS Inputs 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/ntd2d.css?v=c867aedc" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=525cde36"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Documentation" href="api.html" />
+    <link rel="prev" title="Generate Alchemical LAMMPS Inputs’s Documentation" href="index.html" />
+   
+
+  <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API Documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Generate Alchemical LAMMPS Inputs’s Documentation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Generate Alchemical LAMMPS Inputs 0.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Getting Started</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
+<!--- GitHub Badges only --->
+<p><a class="reference external" href="https://github.com/usnistgov/generate_alchemical_lammps_inputs/actions?query=workflow%3ACI"><img alt="Build Status" src="https://github.com/usnistgov/generate_alchemical_lammps_inputs/workflows/CI/badge.svg" /></a></p>
+<section id="nist-disclaimer">
+<h2><a class="reference external" href="https://www.nist.gov/open/license">NIST Disclaimer</a><a class="headerlink" href="#nist-disclaimer" title="Permalink to this heading">¶</a></h2>
+<p>Certain commercial equipment, instruments, or materials are identified in this paper to foster understanding. Such identification does not imply recommendation or endorsement by the National Institute of Standards and Technology, nor does it imply that the materials or equipment identified are necessarily the best available for the purpose.</p>
+</section>
+<section id="generate-alchemical-lammps-inputs">
+<h2>Generate Alchemical LAMMPS Inputs<a class="headerlink" href="#generate-alchemical-lammps-inputs" title="Permalink to this heading">¶</a></h2>
+<p>Functions to generate LAMMPS inputs for alchemical calculations. This package was produced for generating the simulation input file for the completion of the publication “Hydration Contribution to the Solvation Free Energy of Water-Soluble Polymers”. These functions include inputs used for thermodynamic integration, Bennett Acceptance Ratio (BAR), or Multi-state Bennett Acceptance Ratio (MBAR).</p>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>locally: Run the following in the command line: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">generate_alchemical_lammps_inputs</span> <span class="pre">-d</span></code></p></li>
+<li><p>online: <a class="reference external" href="https://www.nist.gov/docs4nist/">GitHub</a></p></li>
+</ul>
+</section>
+<section id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading">¶</a></h3>
+<p>This package is tested for python 3.10+ on all Windows, MacOS, and Linux systems.
+No python library dependencies are required before installation.</p>
+</section>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h3>
+<ul>
+<li><p>Step 1: Download the master branch from our gitlab page as a zip file, or clone it to your working directory with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/usnistgov/generate_alchemical_lammps_inputs</span></code></p>
+</li>
+<li><p>Step 2 (Optional): If you are using conda and you want to create a new environment for this package you may install with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">requirements.yaml</span></code></p>
+</li>
+<li><p>Step 3: Install package with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">generate_alchemical_lammps_inputs/.</span></code></p>
+<p>or change directories and run</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code></p>
+<p>Adding the flag <code class="docutils literal notranslate"><span class="pre">-e</span></code> will allow you to make changes that will be functional without reinstallation.</p>
+</li>
+<li><p>Step 4: Initialize pre-commits (for developers)</p>
+<p><code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code></p>
+</li>
+</ul>
+</section>
+<section id="license">
+<h3>LICENSE<a class="headerlink" href="#license" title="Permalink to this heading">¶</a></h3>
+<p>The license in this repository is superseded by the most updated language
+on of the Public Access to NIST Research <a class="reference external" href="https://www.nist.gov/open/license#software"><em>Copyright, Fair Use, and Licensing Statement for SRD, Data, and Software</em></a>.</p>
+</section>
+<section id="contact">
+<h3>Contact<a class="headerlink" href="#contact" title="Permalink to this heading">¶</a></h3>
+<p>Jennifer A. Clark, PhD<br />
+<a class="reference external" href="https://www.nist.gov/people/debra-audus">Debra J. Audus, PhD</a> (debra.audus&#64;nist.gov)<br />
+<a class="reference external" href="https://www.nist.gov/people/jack-f-douglas">Jack F. Douglas, PhD</a></p>
+</section>
+<section id="affiliation">
+<h3>Affiliation<a class="headerlink" href="#affiliation" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference external" href="https://www.nist.gov/programs-projects/polymer-analytics">Polymer Analytics Project</a><br />
+<a class="reference external" href="https://www.nist.gov/mml/materials-science-and-engineering-division/polymers-and-complex-fluids-group">Polymer and Complex Fluids Group</a><br />
+<a class="reference external" href="https://www.nist.gov/mml/materials-science-and-engineering-division">Materials Science and Engineering Division</a><br />
+<a class="reference external" href="https://www.nist.gov/mml">Material Measurement Laboratory</a><br />
+<a class="reference external" href="https://www.nist.gov">National Institute of Standards and Technology</a></p>
+</section>
+<section id="citation">
+<h3>Citation<a class="headerlink" href="#citation" title="Permalink to this heading">¶</a></h3>
+<p>Clark, J. A.; Audus, D. J.; Douglas, J. F. Python Package for Generating LAMMPS Input Scripts for Alchemical Processes: Generate_alchemical_lammps_inputs, 2024. https://doi.org/10.18434/mds2-3641.</p>
+<hr class="docutils" />
+<section id="acknowledgements">
+<h4>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this heading">¶</a></h4>
+<p>Project based on the
+<a class="reference external" href="https://gitlab.nist.com/jaclark5/cookiecutter_template_nist_python">NIST Internal Cookiecutter</a> version 0.0.</p>
+<!-- References -->
+</section>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#nist-disclaimer">NIST Disclaimer</a></li>
+<li><a class="reference internal" href="#generate-alchemical-lammps-inputs">Generate Alchemical LAMMPS Inputs</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#license">LICENSE</a></li>
+<li><a class="reference internal" href="#contact">Contact</a></li>
+<li><a class="reference internal" href="#affiliation">Affiliation</a></li>
+<li><a class="reference internal" href="#citation">Citation</a><ul>
+<li><a class="reference internal" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Generate Alchemical LAMMPS Inputs’s Documentation</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="api.html"
+                          title="next chapter">API Documentation</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/readme.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API Documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Generate Alchemical LAMMPS Inputs’s Documentation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Generate Alchemical LAMMPS Inputs 0.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Getting Started</a></li> 
+      </ul>
+    </div>
+
+  
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Works of NIST employees are not not subject to copyright protection in the United States.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+
+  <!-- Taken from https://www.filamentgroup.com/lab/html-includes/#another-demo%3A-including-another-html-file -->
+  <iframe src="_static/ntd2d_menu.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </body>
+</html>

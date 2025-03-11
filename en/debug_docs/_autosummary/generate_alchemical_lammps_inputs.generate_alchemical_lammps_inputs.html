@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>generate_alchemical_lammps_inputs &#8212; Generate Alchemical LAMMPS Inputs 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=c867aedc" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=525cde36"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="generate_input_linear_approximation" href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation.html" />
+    <link rel="prev" title="generate_alchemical_lammps_inputs" href="generate_alchemical_lammps_inputs.html" />
+   
+
+  <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation.html" title="generate_input_linear_approximation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="generate_alchemical_lammps_inputs.html" title="generate_alchemical_lammps_inputs"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Generate Alchemical LAMMPS Inputs 0.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="generate_alchemical_lammps_inputs.html" accesskey="U">generate_alchemical_lammps_inputs</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">generate_alchemical_lammps_inputs</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="generate-alchemical-lammps-inputs">
+<h1>generate_alchemical_lammps_inputs<a class="headerlink" href="#generate-alchemical-lammps-inputs" title="Permalink to this heading">¶</a></h1>
+<p>generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs</p>
+<p class="rubric">Description</p>
+<span class="target" id="module-generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs"></span><p>Functions to generate LAMMPS inputs for alchemical calculations.</p>
+<p>For clarity, we would like to distinguish the difference between $lambda$ and $lambda’$. We refer to $lambda$ as
+the potential scaling of the equilibrated system, so that when this value is changed, the system undergoes another equilibration
+step. One the other hand, $lambda’$ is the value used to scaled the potentials for the configurations of the system equilibrated
+for $lambda$. The value of $lambda’$ is used in two instances. First, in thermodynamic integration (TI), values of $lambda’$
+that are very close to $lambda$ can be used to calculate the derivative of the free energy with respect to $lambda$. This is
+needed because LAMMPS does not compute explicit derivatives, although one should check whether they can derive an explicit expression, they cannot for changes of
+$lambda’$ in the soft Lennard-Jones (LJ) potential.</p>
+<p>Because generating LAMMPS input files can be cumbersome, functions have been included to generate the appropriate sections. If a linear approximation
+can be made to calculate $U_{lambda,lambda’}$ from $U_{lambda}$ in post-processing, we recommend using
+<code class="xref py py-func docutils literal notranslate"><span class="pre">alchemlyb.parsing.generate_input_linear_approximation()</span></code>. If a linear approximation cannot be made (such as changing
+$lambda$ in the soft-LJ potential) we recommend running a loop over all values of $lambda$ saving frames spaced to be
+independent samples, and an output file with small perturbations with $lambda’$ to calculate the derivative for TI in
+post-processing. This is achieved with <cite>alchemlyb.parsing.generate_traj_input()</cite>. After this first simulation, we then
+recommend the files needed for MBAR are generated using the [rerun](<a class="reference external" href="https://docs.lammps.org/rerun.html">https://docs.lammps.org/rerun.html</a>) feature in LAMMPS.
+Breaking up the computation like this will allow one to add additional points to their MBAR analysis without repeating the
+points from an initial simulation. Generating the file for a rerun is achieved with
+<code class="xref py py-func docutils literal notranslate"><span class="pre">alchemlyb.parsing.generate_rerun_mbar()</span></code>. Notice that the output files do not contain the header information expected
+in LAMMPS as that is system specific and left to the user.</p>
+<p>Note that in LAMMPS, [fix adapt/fep](<a class="reference external" href="https://docs.lammps.org/fix_adapt_fep.html">https://docs.lammps.org/fix_adapt_fep.html</a>) changes $lambda$ and
+[compute fep](<a class="reference external" href="https://docs.lammps.org/compute_fep.html">https://docs.lammps.org/compute_fep.html</a>) changes $lambda’$.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation.html#generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation" title="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_input_linear_approximation</span></code></a></p></td>
+<td><p>Outputs the section of a LAMMPS input file that separates the Coulomb, nonbonded, and bond/angle/torsional contributions of the solute and solvent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_mbar_input.html#generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_mbar_input" title="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_mbar_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_mbar_input</span></code></a></p></td>
+<td><p>Outputs the section of a LAMMPS input file that loops over the values of parameter being changed (e.g., lambda) Small perturbations in the potential energy are also output so that the derivative can be calculated for thermodynamic integration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_rerun_mbar.html#generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_rerun_mbar" title="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_rerun_mbar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_rerun_mbar</span></code></a></p></td>
+<td><p>Outputs the section of a LAMMPS input file that reruns trajectories for different lambda values and calculates the potential energy for all other lambda values with this set of configurations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_traj_input.html#generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_traj_input" title="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_traj_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_traj_input</span></code></a></p></td>
+<td><p>Outputs the section of a LAMMPS input file that loops over the values of parameter being changed (e.g., lambda) Small perturbations in the potential energy are also output so that the derivative can be calculated for thermodynamic integration.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="generate_alchemical_lammps_inputs.html"
+                          title="previous chapter">generate_alchemical_lammps_inputs</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation.html"
+                          title="next chapter">generate_input_linear_approximation</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation.html" title="generate_input_linear_approximation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="generate_alchemical_lammps_inputs.html" title="generate_alchemical_lammps_inputs"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Generate Alchemical LAMMPS Inputs 0.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="generate_alchemical_lammps_inputs.html" >generate_alchemical_lammps_inputs</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">generate_alchemical_lammps_inputs</a></li> 
+      </ul>
+    </div>
+
+  
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Works of NIST employees are not not subject to copyright protection in the United States.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+
+  <!-- Taken from https://www.filamentgroup.com/lab/html-includes/#another-demo%3A-including-another-html-file -->
+  <iframe src="../_static/ntd2d_menu.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </body>
+</html>
