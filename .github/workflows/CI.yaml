@@ -11,10 +11,10 @@ on:
     branches:
       - "main"
   schedule:
-    # Monthly tests run on main by default:
+    # Weekly tests run on main by default:
     #   Scheduled workflows run on the latest commit on the default or base branch.
     #   (from https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule)
-    - cron: "0 0 1 * *"
+    - cron: "0 0 * * 0"
 
 jobs:
   test:
@@ -76,7 +76,7 @@ jobs:
           name: codecov-${{ matrix.os }}-py${{ matrix.python-version }}
 
   docs:
-    name: Build docs on linux
+    name: Build docs on ubuntu-latest
     runs-on: ubuntu-latest
     steps:
       - uses: usnistgov/Docs4NIST@0.7
@@ -84,5 +84,6 @@ jobs:
           docs-folder: docs/
           pip-requirements: docs/requirements.txt
           formats: |-
+            html
             epub
-            pdf
+            
