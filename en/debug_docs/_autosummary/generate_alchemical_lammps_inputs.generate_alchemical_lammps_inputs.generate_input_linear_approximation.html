@@ -15,6 +15,7 @@
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -66,9 +67,9 @@ of the solute and solvent. As long as the parameter being changed is linearly de
 each value of the parameter can be used for thermodynamic integration (TI) or multi-state Bennett acceptance ratio (MBAR).</p>
 <p>The input data file for this script should be an equilibrated frame in the NPT ensemble. Notice that the input file contains
 the following keywords that you might replace with the values for your simulation using <cite>sed</cite>: TEMP, PRESS</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
+<dd class="field-odd"><ul>
 <li><p><strong>parameter_range</strong> (<em>list[float]</em>) – Range of parameter values to be changed where the first value should be the value with which the system has been
 equilibrated.</p></li>
 <li><p><strong>parameter_change</strong> (<em>float</em>) – The size of the step between parameter values, where a positive value increases and a negative value decreases.
@@ -77,52 +78,67 @@ LAMMPS will not end at the desired value.</p></li>
 <li><p><strong>fix_adapt_changes</strong> (<em>list</em>) – A list of lists containing the following information from <a class="reference external" href="https://docs.lammps.org/fix_adapt_fep.html">fix adapt/fep</a>:
 attribute (str), args (tuple), e.g., [[“pair”, (“lj/cut/soft”, “lambda”, 1, 2)]]. The attributes supported in LAMMPS are:</p>
 <ul>
-<li><p>pair; arguments are: pair_style parameter solvent_type(s) solute_type(s)</p></li>
+<li><p>pair; arguments are: pair_style parameter solvent_type(s) solute_type(s)</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>pair_style (str) : String of LAMMPS pair style being changes</p></li>
 <li><p>parameter (str) : Parameter being varied, see table in <a class="reference external" href="https://docs.lammps.org/compute_fep.html">compute
 fep</a> for the options in your pair-potential</p></li>
 <li><p>solvent_type (str) : String defining atom types in the solvent (no spaces), lists are denoted with an asterisk</p></li>
 <li><p>solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk</p></li>
-<li><dl class="simple">
-<dt>atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a “lambda” parameter</dt><dd><p>whose range is defined in <cite>parameter_range</cite>, where the starting and end points are mutliplied by <code class="docutils literal notranslate"><span class="pre">variable_initial</span></code>.</p>
-</dd>
-</dl>
+</ul>
+</div></blockquote>
 </li>
+<li><dl class="simple">
+<dt>atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a “lambda” parameter</dt><dd><p>whose range is defined in <cite>parameter_range</cite>, where the starting and end points are multiplied by <code class="docutils literal notranslate"><span class="pre">variable_initial</span></code>.</p>
+<ul class="simple">
 <li><p>parameter (str) : Parameter being varied, see table in <a class="reference external" href="https://docs.lammps.org/compute_fep.html">compute
 fep</a> for the options in your pair-potential</p></li>
 <li><p>atom_type (str) : String defining atom types being affected, lists are denoted with an asterisk</p></li>
 <li><p>variable_initial (float) : Specify the initial value of the variable</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </li>
 <li><p><strong>temperature</strong> (<em>float</em>) – Temperature of the simulation. This will create a variable that is used in the FEP computes.</p></li>
 <li><p><strong>types_solvent</strong> (<em>str</em>) – String defining all atom types in the solvent (no spaces) with lists defined using colons</p></li>
 <li><p><strong>types_solute</strong> (<em>str</em>) – String defining all atom types in the solute (no spaces) with lists defined using colons</p></li>
 <li><p><strong>n_run_equil_steps</strong> (<em>int, default=1000000</em>) – Number of steps in each equilibration run, first with a ramp from the old lambda value to the new value and then for
-equilibration at the new value. The total number of timesteps taken per step in lambda (i.e., window) is
+equilibration at the new value. The total number of time steps taken per step in lambda (i.e., window) is
 2*n_run_equil_steps + n_run_prod_steps</p></li>
-<li><p><strong>n_run_prod_steps</strong> (<em>int, default=1000000</em>) – Number of steps in each production run. The total number of timesteps taken per step in lambda (i.e., window) is
+<li><p><strong>n_run_prod_steps</strong> (<em>int, default=1000000</em>) – Number of steps in each production run. The total number of time steps taken per step in lambda (i.e., window) is
 2*n_run_equil_steps + n_run_prod_steps</p></li>
+<li><p><strong>output_frequency</strong> (<em>int, default=1000</em>) – Number of steps between thermo output and dump output.</p></li>
 <li><p><strong>output_file</strong> (<em>str, default=None</em>) – File name and path for optional output file</p></li>
 <li><p><strong>fix_adapt_changes2</strong> (<em>list, default=[]</em>) – A list of lists containing the following information from <a class="reference external" href="https://docs.lammps.org/fix_adapt_fep.html">fix adapt/fep</a>:
 attribute (str), args (tuple). This option is useful when a parameter that has been varied and is set to another value
 in this simulation, e.g., lambda when the Coulomb potential is set to zero. Using this feature avoids complications
 with writing the pair potential information in the data file. The attributes supported in LAMMPS are:</p>
 <ul>
-<li><p>pair; arguments are: pair_style parameter solvent_type(s) solute_type(s)</p></li>
+<li><p>pair; arguments are: pair_style parameter solvent_type(s) solute_type(s)</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>pair_style (str) : String of LAMMPS pair style being changes</p></li>
 <li><p>parameter (str) : Parameter being varied, see table in <a class="reference external" href="https://docs.lammps.org/compute_fep.html">compute fep</a>
 for the options in your pair-potential</p></li>
 <li><p>solvent_type (str) : String defining atom types in the solvent (no spaces), lists are denoted with an asterisk</p></li>
 <li><p>solute_type (str) : String defining atom types in the solute (no spaces), lists are denoted with an asterisk</p></li>
-<li><dl class="simple">
-<dt>atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a “lambda” parameter</dt><dd><p>whose range is defined in <cite>parameter_range</cite>, where the starting and end points are mutliplied by <code class="docutils literal notranslate"><span class="pre">variable_initial</span></code>.</p>
-</dd>
-</dl>
+</ul>
+</div></blockquote>
 </li>
+<li><dl class="simple">
+<dt>atom; arguments are: parameter atom_type(s). These lines will be scaled by the variation of a “lambda” parameter</dt><dd><p>whose range is defined in <cite>parameter_range</cite>, where the starting and end points are multiplied by <code class="docutils literal notranslate"><span class="pre">variable_initial</span></code>.</p>
+<ul class="simple">
 <li><p>parameter (str) : Parameter being varied, see table in <a class="reference external" href="https://docs.lammps.org/compute_fep.html">compute
 fep</a> for the options such as “charge”</p></li>
 <li><p>atom_type (str) : String defining atom types being affected, lists are denoted with an asterisk</p></li>
 <li><p>variable_initial (float) : Specify the initial value of the variable</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </li>
 <li><p><strong>parameter2_value</strong> (<em>str, default=None</em>) – Value to set <code class="docutils literal notranslate"><span class="pre">parameter2</span></code> in <code class="docutils literal notranslate"><span class="pre">fix_adapt_changes2</span></code>.</p></li>

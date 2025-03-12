@@ -15,6 +15,9 @@
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -60,26 +63,27 @@
 <p>generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs</p>
 <p class="rubric">Description</p>
 <span class="target" id="module-generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs"></span><p>Functions to generate LAMMPS inputs for alchemical calculations.</p>
-<p>For clarity, we would like to distinguish the difference between $lambda$ and $lambda’$. We refer to $lambda$ as
-the potential scaling of the equilibrated system, so that when this value is changed, the system undergoes another equilibration
-step. One the other hand, $lambda’$ is the value used to scaled the potentials for the configurations of the system equilibrated
-for $lambda$. The value of $lambda’$ is used in two instances. First, in thermodynamic integration (TI), values of $lambda’$
-that are very close to $lambda$ can be used to calculate the derivative of the free energy with respect to $lambda$. This is
+<p>For clarity, we would like to distinguish the difference between <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(\lambda'\)</span> (or <span class="math notranslate nohighlight">\(\lambda_2\)</span>). We refer to <span class="math notranslate nohighlight">\(\lambda\)</span> as
+the scaling factor on the potential energy of the equilibrated system, so that when this value is changed, the system undergoes another equilibration
+step. On the other hand, <span class="math notranslate nohighlight">\(\lambda'\)</span> is the value used to scale the potentials despite those the configurations being equilibrated
+for a different value of <span class="math notranslate nohighlight">\(\lambda\)</span>. The value of <span class="math notranslate nohighlight">\(\lambda'\)</span> is used in two instances. First, in thermodynamic integration (TI), values of <span class="math notranslate nohighlight">\(\lambda'\)</span>
+that are very close to <span class="math notranslate nohighlight">\(\lambda\)</span> can be used to calculate the derivative of the free energy with respect to <span class="math notranslate nohighlight">\(\lambda\)</span>. This is
 needed because LAMMPS does not compute explicit derivatives, although one should check whether they can derive an explicit expression, they cannot for changes of
-$lambda’$ in the soft Lennard-Jones (LJ) potential.</p>
+<span class="math notranslate nohighlight">\(\lambda'\)</span> in the soft Lennard-Jones (LJ) potential.</p>
 <p>Because generating LAMMPS input files can be cumbersome, functions have been included to generate the appropriate sections. If a linear approximation
-can be made to calculate $U_{lambda,lambda’}$ from $U_{lambda}$ in post-processing, we recommend using
-<code class="xref py py-func docutils literal notranslate"><span class="pre">alchemlyb.parsing.generate_input_linear_approximation()</span></code>. If a linear approximation cannot be made (such as changing
-$lambda$ in the soft-LJ potential) we recommend running a loop over all values of $lambda$ saving frames spaced to be
-independent samples, and an output file with small perturbations with $lambda’$ to calculate the derivative for TI in
-post-processing. This is achieved with <cite>alchemlyb.parsing.generate_traj_input()</cite>. After this first simulation, we then
-recommend the files needed for MBAR are generated using the [rerun](<a class="reference external" href="https://docs.lammps.org/rerun.html">https://docs.lammps.org/rerun.html</a>) feature in LAMMPS.
+can be made to calculate <span class="math notranslate nohighlight">\(U_{\lambda,\lambda'}\)</span> from <span class="math notranslate nohighlight">\(U_{\lambda}\)</span> in post-processing, we recommend using
+<a class="reference internal" href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation.html#generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation" title="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_input_linear_approximation"><code class="xref py py-func docutils literal notranslate"><span class="pre">generate_input_linear_approximation()</span></code></a>. If a linear approximation cannot be made (such as changing
+<span class="math notranslate nohighlight">\(\lambda\)</span> in the soft-LJ potential) we recommend running a loop over all values of <span class="math notranslate nohighlight">\(\lambda\)</span> saving frames spaced to be
+independent samples, and an output file with small perturbations in <span class="math notranslate nohighlight">\(\lambda'\)</span> to calculate the derivative for TI in
+post-processing. This is achieved with <a class="reference internal" href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_traj_input.html#generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_traj_input" title="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_traj_input"><code class="xref py py-func docutils literal notranslate"><span class="pre">generate_traj_input()</span></code></a>. After this first simulation, we then
+recommend the files needed for MBAR are generated using the <a class="reference external" href="https://docs.lammps.org/rerun.html">rerun</a> feature in LAMMPS.
 Breaking up the computation like this will allow one to add additional points to their MBAR analysis without repeating the
 points from an initial simulation. Generating the file for a rerun is achieved with
-<code class="xref py py-func docutils literal notranslate"><span class="pre">alchemlyb.parsing.generate_rerun_mbar()</span></code>. Notice that the output files do not contain the header information expected
+<a class="reference internal" href="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_rerun_mbar.html#generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_rerun_mbar" title="generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs.generate_rerun_mbar"><code class="xref py py-func docutils literal notranslate"><span class="pre">generate_rerun_mbar()</span></code></a>.</p>
+<p>Notice that the output files do not contain the header information expected
 in LAMMPS as that is system specific and left to the user.</p>
-<p>Note that in LAMMPS, [fix adapt/fep](<a class="reference external" href="https://docs.lammps.org/fix_adapt_fep.html">https://docs.lammps.org/fix_adapt_fep.html</a>) changes $lambda$ and
-[compute fep](<a class="reference external" href="https://docs.lammps.org/compute_fep.html">https://docs.lammps.org/compute_fep.html</a>) changes $lambda’$.</p>
+<p>Note that in LAMMPS, <a class="reference external" href="https://docs.lammps.org/fix_adapt_fep.html">fix adapt/fep</a> changes values of <span class="math notranslate nohighlight">\(\lambda\)</span> and
+<a class="reference external" href="https://docs.lammps.org/compute_fep.html">compute fep</a> changes values of <span class="math notranslate nohighlight">\(\lambda'\)</span>.</p>
 <p class="rubric">Functions</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
