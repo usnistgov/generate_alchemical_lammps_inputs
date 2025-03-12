@@ -1,18 +1,19 @@
 Generate Alchemical LAMMPS Inputs's Documentation
-===============================================
-
-.. include:: readme.rst
+=================================================
 
 .. toctree::
    :maxdepth: 1
    :caption: Contents:
 
    readme
+   examples.ipynb
    api
    contributing
    authors
    license
    changelog
+
+.. include:: readme.rst
 
 Indices and Tables
 ==================

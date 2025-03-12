@@ -22,13 +22,13 @@ No python library dependencies are required before installation.
 
 ## Installation
 
-* Step 1: Download the master branch from our gitlab page as a zip file, or clone it to your working directory with:
+* Step 1: Download the master branch from our github page as a zip file, or clone it to your working directory with:
 
     ``git clone https://github.com/usnistgov/generate_alchemical_lammps_inputs``
 
 * Step 2 (Optional): If you are using conda and you want to create a new environment for this package you may install with:
 
-    ``conda env create -f requirements.yaml``
+    ``conda env create -f generate_alchemical_lammps_inputs/requirements.yaml``
 
 * Step 3: Install package with:
 
@@ -66,13 +66,6 @@ Jennifer A. Clark, PhD\
 
 Clark, J. A.; Audus, D. J.; Douglas, J. F. Python Package for Generating LAMMPS Input Scripts for Alchemical Processes: Generate_alchemical_lammps_inputs, 2024. https://doi.org/10.18434/mds2-3641.
 
----
-
-### Acknowledgements
-
-Project based on the
-[NIST Internal Cookiecutter](https://gitlab.nist.com/jaclark5/cookiecutter_template_nist_python) version 0.0.
-
 <!-- References -->
 
 [18f-guide]: https://github.com/18F/open-source-guide/blob/18f-pages/pages/making-readmes-readable.md
@@ -82,7 +75,6 @@ Project based on the
 [li-gpl]: https://opensource.org/licenses/gpl-license
 [li-mit]: https://opensource.org/licenses/mit-license
 [nist-disclaimer]: https://www.nist.gov/open/license
-[nist-s-1801-02]: https://inet.nist.gov/adlp/directives/review-data-intended-publication
 [nist-open]: https://www.nist.gov/open/license#software
 [docs4nist]: https://www.nist.gov/docs4nist/
 [daudus]: https://www.nist.gov/people/debra-audus
