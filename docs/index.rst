@@ -6,7 +6,6 @@ Generate Alchemical LAMMPS Inputs's Documentation
    :caption: Contents:
 
    readme
-   examples.ipynb
    api
    contributing
    authors
