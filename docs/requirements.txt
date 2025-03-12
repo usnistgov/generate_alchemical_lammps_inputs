@@ -1,4 +1,4 @@
 myst-parser
 sphinx-copybutton
-pandoc
+nbsphinx
 -e .
