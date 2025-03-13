@@ -82,7 +82,8 @@ jobs:
       - uses: usnistgov/Docs4NIST@0.7
         with:
           docs-folder: docs/
-          pip-requirements: docs/requirements.txt
+          environment-file: docs/requirements.yaml
+          environment-name: generate_alchemical_lammps_inputs
           formats: |-
             html
             epub
