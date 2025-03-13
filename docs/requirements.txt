@@ -1,5 +1,5 @@
 myst-parser
 sphinx-copybutton
 nbsphinx
-py-pandoc
+pypandoc_binary
 -e .
