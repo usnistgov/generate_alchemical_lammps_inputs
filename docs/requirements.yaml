@@ -17,4 +17,4 @@ dependencies:
   - pip:
     - myst_parser
     - sphinx_copybutton
-    - -e ..
+    - .
