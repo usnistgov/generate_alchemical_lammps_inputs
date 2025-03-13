@@ -83,7 +83,7 @@ jobs:
       - uses: usnistgov/Docs4NIST@0.7
         with:
           docs-folder: docs/
-          conda-enviroment: docs/requirements.yaml
+          conda-environment: docs/requirements.yaml
           formats: |-
             epub
             html
