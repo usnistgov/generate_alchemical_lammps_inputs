@@ -1,0 +1,6 @@
+generate\_rerun\_mbar
+=====================
+
+.. currentmodule:: generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs
+
+.. autofunction:: generate_rerun_mbar
