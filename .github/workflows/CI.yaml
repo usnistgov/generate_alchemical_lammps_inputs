@@ -79,12 +79,10 @@ jobs:
     name: Build docs on ubuntu-latest
     runs-on: ubuntu-latest
     steps:
-      - uses: usnistgov/Docs4NIST@0.7
+      - uses: usnistgov/Docs4NIST@0.7.2
         with:
           docs-folder: docs/
-          environment-file: docs/requirements.yaml
-          environment-name: generate_alchemical_lammps_inputs
+          conda-environment: docs/requirements.yaml
           formats: |-
-            html
             epub
-            
+            html

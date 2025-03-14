@@ -1,4 +1,4 @@
-name: gali
+name: galidocs
 channels:
 
   - conda-forge
@@ -17,3 +17,4 @@ dependencies:
   - pip:
     - myst_parser
     - sphinx_copybutton
+    - -e ..

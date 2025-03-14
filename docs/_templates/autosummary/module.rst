@@ -22,7 +22,7 @@
 
    {% block functions %}
    {% if functions %}
-   .. rubric:: Functions
+   .. rubric:: {{ _('Functions') }}
 
    .. autosummary::
       :toctree:
@@ -36,7 +36,7 @@
 
    {% block classes %}
    {% if classes %}
-   .. rubric:: Classes
+   .. rubric:: {{ _('Classes') }}
 
    .. autosummary::
       :toctree:
