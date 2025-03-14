@@ -13,7 +13,7 @@ Functions to generate LAMMPS inputs for alchemical calculations. This package wa
 ## Documentation
 
  - locally: Run the following in the command line: ``python -m generate_alchemical_lammps_inputs -d``
- - online: [GitHub][docs4nist]
+ - Online: [NIST Pages][docs4nist]
 
 ## Dependencies
 
@@ -76,7 +76,7 @@ Clark, J. A.; Audus, D. J.; Douglas, J. F. Python Package for Generating LAMMPS 
 [li-mit]: https://opensource.org/licenses/mit-license
 [nist-disclaimer]: https://www.nist.gov/open/license
 [nist-open]: https://www.nist.gov/open/license#software
-[docs4nist]: https://www.nist.gov/docs4nist/
+[docs4nist]: https://pages.nist.gov/generate_alchemical_lammps_inputs/en/main/index.html
 [daudus]: https://www.nist.gov/people/debra-audus
 [jdouglas]: https://www.nist.gov/people/jack-f-douglas
 [polyanal]: https://www.nist.gov/programs-projects/polymer-analytics
