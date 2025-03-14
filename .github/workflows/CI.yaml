@@ -3,10 +3,11 @@ name: CI
 on:
   workflow_dispatch:
     branches:
-      - "main"
+     - "debug_docs"
   push:
     branches:
       - "main"
+      - "debug_docs"
   pull_request:
     branches:
       - "main"
