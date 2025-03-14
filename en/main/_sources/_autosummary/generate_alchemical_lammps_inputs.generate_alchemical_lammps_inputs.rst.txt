@@ -1,4 +1,4 @@
-﻿generate\_alchemical\_lammps\_inputs
+generate\_alchemical\_lammps\_inputs
 ====================================
 
 .. currentmodule:: generate_alchemical_lammps_inputs.generate_alchemical_lammps_inputs
