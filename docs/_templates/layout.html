@@ -1,4 +1,4 @@
-{{% extends "!layout.html" %}}
+{{% extends "{inherited_layout}" %}}
 
 {{%- block extrahead %}}
   {{{{ super() }}}}
@@ -7,7 +7,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SH9M3SGZK6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){{ '{{dataLayer.push(arguments);}}' }}
     gtag('js', new Date());
 
     gtag('config', 'G-SH9M3SGZK6');
