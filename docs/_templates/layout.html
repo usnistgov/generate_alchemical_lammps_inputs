@@ -1,6 +1,7 @@
-{% extends "!layout.html" %}
+{{% extends "{inherited_layout}" %}}
 
-{% block extrahead %}
+{{%- block extrahead %}}
+  {{{{ super() }}}}
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SH9M3SGZK6"></script>
