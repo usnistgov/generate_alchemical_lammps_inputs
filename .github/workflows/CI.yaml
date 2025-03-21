@@ -79,7 +79,7 @@ jobs:
     name: Build docs on ubuntu-latest
     runs-on: ubuntu-latest
     steps:
-      - uses: usnistgov/Docs4NIST@0.7.2
+      - uses: usnistgov/Docs4NIST@add_analytics
         with:
           docs-folder: docs/
           conda-environment: docs/requirements.yaml
